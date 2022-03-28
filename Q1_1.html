@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Q1</title>
+    <script src="setting.js"></script>
+    <script src="Cookie.js"></script>
+    <script src="HTTP2019.js"></script>
+
+    <script>
+        myObj = {
+            "resourceType": "QuestionnaireResponse",
+            "status": "completed",
+            "subject": {
+                "reference": "Patient/1478659"
+            },
+            "authored": "2020-02-17T12:20:17.1151Z",
+            "item": [{
+                "linkId": "1",
+                "text": "介面層次清晰",
+                "answer": [{
+                    //"disply": "非常滿意",
+                    "valueInteger": 5
+                }]
+            }, {
+                "linkId": "2",
+                "text": "閱讀、排版形式優良",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            }, {
+                "linkId": "3",
+                "text": "符合需求",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            }, {
+                "linkId": "4",
+                "text": "綜合評分",
+                "answer": [{
+                    "valueInteger": 0
+                }]
+            }]
+        };
+
+
+        //http://hapi.fhir.org/baseR4/QuestionnaireResponse/
+
+        function postData() {
+            //介面層次清晰
+            if (document.getElementById("rd_speed_1_5").checked == true) {
+                myObj.item[0].answer[0].valueInteger = document.getElementById("rd_speed_1_5").value;
+                //myObj.item[0].answer[0].valueInteger = 4;
+                //myObj.item[0].answer[0].disply = document.getElementById("rd_speed_1_5").value;  x
+            }
+            if (document.getElementById("rd_speed_1_4").checked == true) {
+                myObj.item[0].answer[0].valueInteger = 4;
+            }
+            if (document.getElementById("rd_speed_1_3").checked == true) {
+                myObj.item[0].answer[0].valueInteger = 3;
+            }
+            if (document.getElementById("rd_speed_1_2").checked == true) {
+                myObj.item[0].answer[0].valueInteger = 2;
+            }
+            if (document.getElementById("rd_speed_1_1").checked == true) {
+                myObj.item[0].answer[0].valueInteger = 1;
+            }
+
+
+            //2.閱讀
+            if (document.getElementById("rd_visual_2_5").checked == true) {
+                myObj.item[1].answer[0].valueInteger = document.getElementById("rd_visual_2_5").value;
+            }
+            if (document.getElementById("rd_visual_2_4").checked == true) {
+                myObj.item[1].answer[0].valueInteger = 4;
+            }
+            if (document.getElementById("rd_visual_2_3").checked == true) {
+                myObj.item[1].answer[0].valueInteger = 3;
+            }
+            if (document.getElementById("rd_visual_2_2").checked == true) {
+                myObj.item[1].answer[0].valueInteger = 2;
+            }
+            if (document.getElementById("rd_visual_2_1").checked == true) {
+                myObj.item[1].answer[0].valueInteger = 1;
+            }
+
+            //3.需求
+            if (document.getElementById("rd_need_3_5").checked == true) {
+                myObj.item[2].answer[0].valueInteger = document.getElementById("rd_need_3_5").value;
+            }
+            if (document.getElementById("rd_need_3_4").checked == true) {
+                myObj.item[2].answer[0].valueInteger = 4;
+            }
+            if (document.getElementById("rd_need_3_3").checked == true) {
+                myObj.item[2].answer[0].valueInteger = 3;
+            }
+            if (document.getElementById("rd_need_3_2").checked == true) {
+                myObj.item[2].answer[0].valueInteger = 2;
+            }
+            if (document.getElementById("rd_need_3_1").checked == true) {
+                myObj.item[2].answer[0].valueInteger = 1;
+            }
+
+
+            //4.綜合 
+            if (document.getElementById("rd_sum_4_5").checked == true) {
+                myObj.item[3].answer[0].valueInteger = document.getElementById("rd_sum_4_5").value;
+            }
+            if (document.getElementById("rd_sum_4_4").checked == true) {
+                myObj.item[3].answer[0].valueInteger = 4;
+            }
+            if (document.getElementById("rd_sum_4_3").checked == true) {
+                myObj.item[3].answer[0].valueInteger = 3;
+            }
+            if (document.getElementById("rd_sum_4_2").checked == true) {
+                myObj.item[3].answer[0].valueInteger = 2;
+            }
+            if (document.getElementById("rd_sum_4_1").checked == true) {
+                myObj.item[3].answer[0].valueInteger = 1;
+            }
+
+
+            var jsonStr = JSON.stringify(myObj); //將myObj中的內容轉換成JSON格式
+            alert(jsonStr);
+
+            var apiURL;
+            apiURL = FHIRrootURL + "/QuestionnaireResponse";
+            HTTPPostData(apiURL, jsonStr); //將網址及轉成JSON格式的myObj傳入副函式中(在HTTR2019.js中)
+
+        }
+
+        function clearData() {
+            var Total_Obj = document.getElementsByTagName("input");
+            // var question=document.getElementsByName("qtext");
+            for (var k = 0; k < Total_Obj.length; k++) {
+                if (Total_Obj[k].type == "radio") {
+                    if (Total_Obj[k].checked) {
+                        Total_Obj[k].checked = false; //將所有radio改成未選擇的狀態
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    FHIR patient id:
+    <input type="text" value="unknown" id="FHIRPtionID" /> <br/>
+
+    <p>EHR、PHR系統使用後評估問卷表</p>
+
+    <input id="Button1" onclick="postData()" type="button" value="postData" />
+    <input id="btnClear" onclick="clearData()" type="button" value="clearData" /><br/> <br/>
+
+    <table width="100%" style="table-layout: fixed" border="1">
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label name="qtext">1.此介面層次清晰</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_speed_1_5" id="rd_speed_1_5" value="5" text="非常滿意"/>
+                           	5非常同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_speed_1_4" id="rd_speed_1_4" value="4" />4 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_speed_1_3" id="rd_speed_1_3" value="3" />3 普通
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_speed_1_2" id="rd_speed_1_2" value="2" />2 不滿意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_speed_1_1" id="rd_speed_1_1" value="1" />1 非常不滿意
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label name="qtext">2.閱讀、排版形式優良</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_visual_2_5" id="rd_visual_2_5" value="5" text="非常滿意"/>
+                           	5非常同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_visual_2_4" id="rd_visual_2_4" value="4" />4 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_visual_2_3" id="rd_visual_2_3" value="3" />3 普通
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_visual_2_2" id="rd_visual_2_2" value="2" />2 不滿意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_visual_2_1" id="rd_visual_2_1" value="1" />1 非常不滿意
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label name="qtext">3.符合需求</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_need_3_5" id="rd_need_3_5" value="5" text="非常滿意"/>
+                           	5非常同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_need_3_4" id="rd_need_3_4" value="4" />4 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_need_3_3" id="rd_need_3_3" value="3" />3 普通
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_need_3_2" id="rd_need_3_2" value="2" />2 不滿意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_need_3_1" id="rd_need_3_1" value="1" />1 非常不滿意
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label name="qtext">4.綜合評分</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sum_4_5" id="rd_sum_4_5" value="5" text="非常滿意"/>
+                           	5非常同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sum_4_4" id="rd_sum_4_4" value="4" />4 同意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sum_4_3" id="rd_sum_4_3" value="3" />3 普通
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sum_4_2" id="rd_sum_4_2" value="2" />2 不滿意
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rd_sum_4_1" id="rd_sum_4_1" value="1" />1 非常不滿意
+                        </label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+
+
+<script>
+    document.getElementById("FHIRPtionID").value = getCookie("patientID");
+    document.getElementById("name").value = getCookie("patientName");
+</script>
+
+</html>
