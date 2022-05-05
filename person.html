@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+    <script src="setting.js"></script>
+    <script src="Cookie.js"></script>
+    <script src="HTTP2019.js"></script>
+
+
+
+    <script>
+        var myObj = {
+            "resourceType": "Person",
+            "identifier": [{
+                "system": "UserID",
+                "value": "albertEinstein@gmail.com"
+            }, {
+                "system": "Password",
+                "value": "NzJkMDE2NmI1NzA3ZDEyOWRjMzIxZTU2NjkyZmU0NTRjMDM0NTUyZWU5ZTJiMzhmNWE3ZjFjMTMwNmE2MzJlYQ=="
+            }, {
+                "system": "HighestEduDegree",
+                "value": "PhD"
+            }, {
+                "system": "Institution",
+                "value": "Oxford University"
+            }],
+            "name": [{
+                "text": "Albert Einstein"
+            }],
+            "telecom": [{
+                "system": "email",
+                "value": "albertEinstein@gmail.com"
+            }]
+        }
+
+        function postData() {
+
+            myObj.identifier[0].value = document.getElementById("account1").value;
+            myObj.identifier[1].value = document.getElementById("password1").value;
+            myObj.identifier[2].value = document.getElementById("edu1").value;
+            myObj.identifier[3].value = document.getElementById("institution1").value;
+            myObj.name[0].text = document.getElementById("name1").value;
+            myObj.telecom[0].value = document.getElementById("email1").value;
+
+
+            alert("aaa");
+
+            var jsonStr = JSON.stringify(myObj);
+            //alert(jsonStr);
+            var apiURL;
+            apiURL = FHIRrootURL + '/' + "Person";
+            HTTPPostData(apiURL, jsonStr);
+        }
+    </script>
+</head>
+
+<body style="height:780px">
+
+    您的帳號：
+    <input type="text" id="account1">
+
+    <br><br>您的密碼：
+    <input type="password" id="password1">
+
+    <br><br>您的最高學歷：
+    <input type="text" id="edu1">
+
+    <br><br>您的服務單位：
+    <input type="text" id="institution1">
+
+    <br><br>您的姓名：
+    <input type="text" id="name1">
+
+    <br><br>您的聯絡信箱：
+    <input type="text" id="email1">
+
+    <br><br><input id="Button1" onclick="postData()" type="button" value="postData" /><br><br>
+
+</body>
+
+</html>

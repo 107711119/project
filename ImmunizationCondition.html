@@ -1,484 +1,441 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-   
-  <script src="setting.js"></script>
-  <script src="Cookie.js"></script> 
-  <script src="HTTP2019.js"></script>
- <script>
 
-  
-     /* var gender;
-      gender = getCookie("gender");
-      if (gender == "male")
-      { document.getElementById("gm").checked = true; }
-      else
-      { document.getElementById("gf").checked = true; }
-*/
-
-var con1fever = {
-  "resourceType": "Condition",
-
-  "severity": {
-    "coding": [
-      {
-        "system": "http://snomed.info/sct",
-        "code": "255604002",
-        "display": "Mild"
-      }
-    ]
-  },
-  "code": {
-    "coding": [
-      {
-        "system": "http://snomed.info/sct",
-        "code": "386661006",
-        "display": "Fever"
-      }
-    ],
-    "text":" Fever" 
-  },
-  "bodySite": [
-    {
-      "coding": [
-        {
-          "system": "http://snomed.info/sct",
-          "code": "386661006",
-          "display": "Entire body as a whole"
-        }
-      ]
-    }
-  ],
-  "subject": {
-    "reference": "Patient/1563",
-    "display": "王小明"
-  },
-}
-
-  var con2headache={
-    "resourceType": "Condition",
-
-"severity": {
-  "coding": [
-    {
-      "system": "http://snomed.info/sct",
-      "code": "255604002",
-      "display": "Mild"
-    }
-  ]
-},
-"code": {
-  "coding": [
-    {
-      "system": "http://snomed.info/sct",
-      "code": "25064002",
-      "display": "Headache"
-    }
-  ],
-  "text":"Headache" 
-},
-"bodySite": [
-  {
-    "coding": [
-      {
-        "system": "http://snomed.info/sct",
-        "code": "38266002",
-        "display": "Entire body as a whole"
-      }
-    ]
-  }
-],
-"subject": {
-  "reference": "Patient/1563",
-  "display": "王小明"
-},
-  }
-
-  var con3fatigue = {
-  "resourceType": "Condition",
-
-  "severity": {
-    "coding": [
-      {
-        "system": "http://snomed.info/sct",
-        "code": "255604002",
-        "display": "Mild"
-      }
-    ]
-  },
-  "code": {
-    "coding": [
-      {
-        "system": "http://snomed.info/sct",
-        "code": "84229001",
-        "display": "Fatigue"
-      }
-    ],
-    "text":" Fatigue" 
-  },
-  "bodySite": [
-    {
-      "coding": [
-        {
-          "system": "http://snomed.info/sct",
-          "code": "84229001",
-          "display": "Entire body as a whole"
-        }
-      ]
-    }
-  ],
-  "subject": {
-    "reference": "Patient/1563",
-    "display": "王小明"
-  },
-}
-
-var con4musclepain = {
-  "resourceType": "Condition",
-
-  "severity": {
-    "coding": [
-      {
-        "system": "http://snomed.info/sct",
-        "code": "255604002",
-        "display": "Mild"
-      }
-    ]
-  },
-  "code": {
-    "coding": [
-      {
-        "system": "http://snomed.info/sct",
-        "code": "68962001",
-        "display": "Muscle pain"
-      }
-    ],
-    "text":"Muscle pain" 
-  },
-  "bodySite": [
-    {
-      "coding": [
-        {
-          "system": "http://snomed.info/sct",
-          "code": "84229001",
-          "display": "Entire body as a whole"
-        }
-      ]
-    }
-  ],
-  "subject": {
-    "reference": "Patient/1563",
-    "display": "王小明"
-  },
-}
-
-var con5nv = {
-  "resourceType": "Condition",
-
-  "severity": {
-    "coding": [
-      {
-        "system": "http://snomed.info/sct",
-        "code": "255604002",
-        "display": "Mild"
-      }
-    ]
-  },
-  "code": {
-              "coding": [
-                {
-                  "system": "http://snomed.info/sct",
-                  "code": "16932000",
-                  "display": "Nausea and vomiting "
-                }
-              ],
-              "text":"Nausea and vomiting噁心嘔吐" 
+    <script src="setting.js"></script>
+    <script src="Cookie.js"></script>
+    <script src="HTTP2019.js"></script>
+    <script>
+        var con1fever = {
+            "resourceType": "Condition",
+            "severity": {
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "255604002",
+                    "display": "Mild"
+                }]
             },
-  "subject": {
-    "reference": "Patient/1563",
-    "display": "王小明"
-  },
-}
-
-var con6ms = {
-  "resourceType": "Condition",
-
-  "severity": {
-    "coding": [
-      {
-        "system": "http://snomed.info/sct",
-        "code": "255604002",
-        "display": "Mild"
-      }
-    ]
-  },
-  "code": {
-              "coding": [
-                {
-                  "system": "http://snomed.info/sct",
-                  "code": "25064002",
-                  "display": "Muscle stiffness"
-                }
-              ],
-              "text":"全身痠痛" 
+            "code": {
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "386661006",
+                    "display": "Fever"
+                }],
+                "text": " Fever"
             },
-  "bodySite": [
-    {
-      "coding": [
-        {
-          "system": "http://snomed.info/sct",
-          "code": "84229001",
-          "display": "Entire body as a whole"
-        }
-      ]
-    }
-  ],
-  "subject": {
-    "reference": "Patient/1563",
-    "display": "王小明"
-  },
-}
-
-var con7chill = {
-  "resourceType": "Condition",
-
-  "severity": {
-    "coding": [
-      {
-        "system": "http://snomed.info/sct",
-        "code": "255604002",
-        "display": "Mild"
-      }
-    ]
-  },
-  "code": {
-              "coding": [
-                {
-                  "system": "http://snomed.info/sct",
-                  "code": "43724002",
-                  "display": "Chill"
-                }
-              ],
-              "text":"冷顫" 
+            "bodySite": [{
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "386661006",
+                    "display": "Entire body as a whole"
+                }]
+            }],
+            "subject": {
+                "reference": "Patient/1563",
+                "display": "王小明"
             },
-  "bodySite": [
-    {
-      "coding": [
-        {
-          "system": "http://snomed.info/sct",
-          "code": "84229001",
-          "display": "Entire body as a whole"
+            "onsetDateTime": "2015-12-01T00:00:00",
         }
-      ]
-    }
-  ],
-  "subject": {
-    "reference": "Patient/1563",
-    "display": "王小明"
-  },
-}
-	 
-   function postcon1fever() {
-   
-   if(document.getElementById("Con1").checked == true)
-   {
-     var subRef = "Patient/";
-     con1fever.subject.reference =   subRef  +  document.getElementById("FHIRPtionID").value;
-     con1fever.subject.display=document.getElementById("name").value;
-     con1fever.code.coding[0].code="386661006";
-     con1fever.code.coding[0].display="Fever";
-     con1fever.code.text="發燒";
 
-     var jsonStr = JSON.stringify(con1fever);
-       alert(jsonStr);
+        var con2headache = {
+            "resourceType": "Condition",
 
-      var apiURL;
-       apiURL = FHIRrootURL + '/' + "Condition";
-        HTTPPostData(apiURL, jsonStr); 
-   } 
-  }
+            "severity": {
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "255604002",
+                    "display": "Mild"
+                }]
+            },
+            "code": {
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "25064002",
+                    "display": "Headache"
+                }],
+                "text": "Headache"
+            },
+            "bodySite": [{
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "38266002",
+                    "display": "Entire body as a whole"
+                }]
+            }],
+            "subject": {
+                "reference": "Patient/1563",
+                "display": "王小明"
+            },
+            "onsetDateTime": "2015-02-07T13:28:17",
+        }
 
-   function postcon2headache() {
+        var con3fatigue = {
+            "resourceType": "Condition",
 
-   if(document.getElementById("Con2").checked == true)
-   {
-    var subRef = "Patient/";
-    con2headache.subject.reference =   subRef  +  document.getElementById("FHIRPtionID").value;
-    con2headache.subject.display=document.getElementById("name").value;
-    con2headache.code.coding[0].code="25064002";
-    con2headache.code.coding[0].disply="Headache";
-    con2headache.code.text="頭痛";
-   if(document.getElementById("Con1Mild").checked == true)
-      {con2headache.severity.coding[0].code = "Mild";
-      con2headache.severity.coding[0].display =  "Mild";       }
-    if(document.getElementById("Con1Moderate").checked == true)
-      {con2headache.severity.coding[0].code = "Moderate";
-      con2headache.severity.coding[0].display =  "Moderate";       }
-    if(document.getElementById("Con1Severe").checked == true)
-      {con2headache.severity.coding[0].code = "Severe";
-      con2headache.severity.coding[0].display = "Severe";       }
+            "severity": {
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "255604002",
+                    "display": "Mild"
+                }]
+            },
+            "code": {
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "84229001",
+                    "display": "Fatigue"
+                }],
+                "text": " Fatigue"
+            },
+            "bodySite": [{
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "84229001",
+                    "display": "Entire body as a whole"
+                }]
+            }],
+            "subject": {
+                "reference": "Patient/1563",
+                "display": "王小明"
+            },
+            "onsetDateTime": "2015-02-07T13:28:17",
+        }
 
-      var jsonStr = JSON.stringify(con2headache);
-        alert(jsonStr);
+        var con4musclepain = {
+            "resourceType": "Condition",
 
-       var apiURL;
-        apiURL = FHIRrootURL + '/' + "Condition";
-         HTTPPostData(apiURL, jsonStr); 
-    } 
-  }
-  
-  function postcon3fatigue(){
-  if(document.getElementById("Con3").checked == true)
-   {
-     var subRef = "Patient/";
-     con3fatigue.subject.reference =   subRef  +  document.getElementById("FHIRPtionID").value;
-     con3fatigue.subject.display=document.getElementById("name").value;
-     con3fatigue.code.coding[0].code="84229001";
-     con3fatigue.code.coding[0].display="Fatigue";
-     con3fatigue.code.text="疲倦";
+            "severity": {
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "255604002",
+                    "display": "Mild"
+                }]
+            },
+            "code": {
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "68962001",
+                    "display": "Muscle pain"
+                }],
+                "text": "Muscle pain"
+            },
+            "bodySite": [{
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "84229001",
+                    "display": "Entire body as a whole"
+                }]
+            }],
+            "subject": {
+                "reference": "Patient/1563",
+                "display": "王小明"
+            },
+            "onsetDateTime": "2015-02-07T13:28:17",
+        }
 
-     var jsonStr = JSON.stringify(con3fatigue);
-       alert(jsonStr);
+        var con5nv = {
+            "resourceType": "Condition",
 
-      var apiURL;
-       apiURL = FHIRrootURL + '/' + "Condition";
-        HTTPPostData(apiURL, jsonStr); 
-   }
-  }
-	
-  function postcon4musclepain() {
+            "severity": {
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "255604002",
+                    "display": "Mild"
+                }]
+            },
+            "code": {
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "16932000",
+                    "display": "Nausea and vomiting "
+                }],
+                "text": "Nausea and vomiting噁心嘔吐"
+            },
+            "subject": {
+                "reference": "Patient/1563",
+                "display": "王小明"
+            },
+            "onsetDateTime": "2015-02-07T13:28:17",
+        }
 
-if(document.getElementById("Con4").checked == true)
-{
- var subRef = "Patient/";
- con4musclepain.subject.reference =   subRef  +  document.getElementById("FHIRPtionID").value;
- con4musclepain.subject.display=document.getElementById("name").value;
- con4musclepain.code.coding[0].code="68962001";
- con4musclepain.code.coding[0].disply="Muscle pain";
- con4musclepain.code.text="肌肉痛";
-if(document.getElementById("Con4Mild").checked == true)
-   {con4musclepain.severity.coding[0].code = "Mild";
-   con4musclepain.severity.coding[0].display =  "Mild";       }
- if(document.getElementById("Con4Moderate").checked == true)
-   {con4musclepain.severity.coding[0].code = "Moderate";
-   con4musclepain.severity.coding[0].display =  "Moderate";       }
- if(document.getElementById("Con4Severe").checked == true)
-   {con4musclepain.severity.coding[0].code = "Severe";
-   con4musclepain.severity.coding[0].display = "Severe";       }
+        var con6ms = {
+            "resourceType": "Condition",
 
-   var jsonStr = JSON.stringify(con4musclepain);
-     alert(jsonStr);
+            "severity": {
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "255604002",
+                    "display": "Mild"
+                }]
+            },
+            "code": {
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "25064002",
+                    "display": "Muscle stiffness"
+                }],
+                "text": "全身痠痛"
+            },
+            "bodySite": [{
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "84229001",
+                    "display": "Entire body as a whole"
+                }]
+            }],
+            "subject": {
+                "reference": "Patient/1563",
+                "display": "王小明"
+            },
+            "onsetDateTime": "2015-02-07T13:28:17",
+        }
 
-    var apiURL;
-     apiURL = FHIRrootURL + '/' + "Condition";
-      HTTPPostData(apiURL, jsonStr); 
- } 
-}
+        var con7chill = {
+            "resourceType": "Condition",
 
-function postcon5nv(){
-  if(document.getElementById("Con5").checked == true)
-   {
-     var subRef = "Patient/";
-     con5nv.subject.reference =   subRef  +  document.getElementById("FHIRPtionID").value;
-     con5nv.subject.display=document.getElementById("name").value;
-     con5nv.code.coding[0].code="16932000";
-     con5nv.code.coding[0].display="Nausea and vomiting";
-     con5nv.code.text="噁心嘔吐";
+            "severity": {
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "255604002",
+                    "display": "Mild"
+                }]
+            },
+            "code": {
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "43724002",
+                    "display": "Chill"
+                }],
+                "text": "冷顫"
+            },
+            "bodySite": [{
+                "coding": [{
+                    "system": "http://snomed.info/sct",
+                    "code": "84229001",
+                    "display": "Entire body as a whole"
+                }]
+            }],
+            "subject": {
+                "reference": "Patient/1563",
+                "display": "王小明"
+            },
+            "onsetDateTime": "2015-02-07T13:28:17",
+        }
 
-     var jsonStr = JSON.stringify(con5nv);
-       alert(jsonStr);
+        function postcon1fever() {
 
-      var apiURL;
-       apiURL = FHIRrootURL + '/' + "Condition";
-        HTTPPostData(apiURL, jsonStr); 
-   }
-  }
+            if (document.getElementById("Con1").checked == true) {
+                var subRef = "Patient/";
+                con1fever.subject.reference = subRef + document.getElementById("FHIRPtionID").value;
+                con1fever.subject.display = document.getElementById("name").value;
+                con1fever.code.coding[0].code = "386661006";
+                con1fever.code.coding[0].display = "Fever";
+                con1fever.code.text = "發燒";
+                con1fever.onsetDateTime = document.getElementById("ctime1").value + ":00";
+                alert(document.getElementById("ctime1").value);
 
-  function postcon6ms(){
-    if(document.getElementById("Con6").checked == true)
-   {
-     var subRef = "Patient/";
-     con6ms.subject.reference =   subRef  +  document.getElementById("FHIRPtionID").value;
-     con6ms.subject.display=document.getElementById("name").value;
-     con6ms.code.coding[0].code="25064002";
-     con6ms.code.coding[0].display="Muscle stiffness";
-     con6ms.code.text="全身痠痛";
+                var jsonStr = JSON.stringify(con1fever);
+                alert(jsonStr);
 
-     var jsonStr = JSON.stringify(con6ms);
-       alert(jsonStr);
+                var apiURL;
+                apiURL = FHIRrootURL + '/' + "Condition";
+                HTTPPostData(apiURL, jsonStr);
+            }
+        }
 
-      var apiURL;
-       apiURL = FHIRrootURL + '/' + "Condition";
-        HTTPPostData(apiURL, jsonStr); 
-   }
-  }
+        function postcon2headache() {
 
-  function postcon7chill(){
-    if(document.getElementById("Con7").checked == true)
-   {
-     var subRef = "Patient/";
-     con7chill.subject.reference =   subRef  +  document.getElementById("FHIRPtionID").value;
-     con7chill.subject.display=document.getElementById("name").value;
-     con7chill.code.coding[0].code="43724002";
-     con7chill.code.coding[0].display="Chill";
-     con7chill.code.text="冷顫";
+            if (document.getElementById("Con2").checked == true) {
+                var subRef = "Patient/";
+                con2headache.subject.reference = subRef + document.getElementById("FHIRPtionID").value;
+                con2headache.subject.display = document.getElementById("name").value;
+                con2headache.code.coding[0].code = "25064002";
+                con2headache.code.coding[0].disply = "Headache";
+                con2headache.code.text = "頭痛";
+                con2headache.onsetDateTime = document.getElementById("ctime2").value + ":00";
+                if (document.getElementById("Con1Mild").checked == true) {
+                    con2headache.severity.coding[0].code = "Mild";
+                    con2headache.severity.coding[0].display = "Mild";
+                }
+                if (document.getElementById("Con1Moderate").checked == true) {
+                    con2headache.severity.coding[0].code = "Moderate";
+                    con2headache.severity.coding[0].display = "Moderate";
+                }
+                if (document.getElementById("Con1Severe").checked == true) {
+                    con2headache.severity.coding[0].code = "Severe";
+                    con2headache.severity.coding[0].display = "Severe";
+                }
 
-     var jsonStr = JSON.stringify(con7chill);
-       alert(jsonStr);
+                var jsonStr = JSON.stringify(con2headache);
+                alert(jsonStr);
 
-      var apiURL;
-       apiURL = FHIRrootURL + '/' + "Condition";
-        HTTPPostData(apiURL, jsonStr); 
-   }
-  }
+                var apiURL;
+                apiURL = FHIRrootURL + '/' + "Condition";
+                HTTPPostData(apiURL, jsonStr);
+            }
+        }
 
+        function postcon3fatigue() {
+            if (document.getElementById("Con3").checked == true) {
+                var subRef = "Patient/";
+                con3fatigue.subject.reference = subRef + document.getElementById("FHIRPtionID").value;
+                con3fatigue.subject.display = document.getElementById("name").value;
+                con3fatigue.code.coding[0].code = "84229001";
+                con3fatigue.code.coding[0].display = "Fatigue";
+                con3fatigue.code.text = "疲倦";
+                con3fatigue.onsetDateTime = document.getElementById("ctime3").value + ":00";
 
-</script>	
-	
+                var jsonStr = JSON.stringify(con3fatigue);
+                alert(jsonStr);
+
+                var apiURL;
+                apiURL = FHIRrootURL + '/' + "Condition";
+                HTTPPostData(apiURL, jsonStr);
+            }
+        }
+
+        function postcon4musclepain() {
+
+            if (document.getElementById("Con4").checked == true) {
+                var subRef = "Patient/";
+                con4musclepain.subject.reference = subRef + document.getElementById("FHIRPtionID").value;
+                con4musclepain.subject.display = document.getElementById("name").value;
+                con4musclepain.code.coding[0].code = "68962001";
+                con4musclepain.code.coding[0].disply = "Muscle pain";
+                con4musclepain.code.text = "肌肉痛";
+                con4musclepain.onsetDateTime = document.getElementById("ctime4").value + ":00";
+                if (document.getElementById("Con4Mild").checked == true) {
+                    con4musclepain.severity.coding[0].code = "Mild";
+                    con4musclepain.severity.coding[0].display = "Mild";
+                }
+                if (document.getElementById("Con4Moderate").checked == true) {
+                    con4musclepain.severity.coding[0].code = "Moderate";
+                    con4musclepain.severity.coding[0].display = "Moderate";
+                }
+                if (document.getElementById("Con4Severe").checked == true) {
+                    con4musclepain.severity.coding[0].code = "Severe";
+                    con4musclepain.severity.coding[0].display = "Severe";
+                }
+
+                var jsonStr = JSON.stringify(con4musclepain);
+                alert(jsonStr);
+
+                var apiURL;
+                apiURL = FHIRrootURL + '/' + "Condition";
+                HTTPPostData(apiURL, jsonStr);
+            }
+        }
+
+        function postcon5nv() {
+            if (document.getElementById("Con5").checked == true) {
+                var subRef = "Patient/";
+                con5nv.subject.reference = subRef + document.getElementById("FHIRPtionID").value;
+                con5nv.subject.display = document.getElementById("name").value;
+                con5nv.code.coding[0].code = "16932000";
+                con5nv.code.coding[0].display = "Nausea and vomiting";
+                con5nv.code.text = "噁心嘔吐";
+                con5nv.onsetDateTime = document.getElementById("ctime5").value + ":00";
+
+                var jsonStr = JSON.stringify(con5nv);
+                alert(jsonStr);
+
+                var apiURL;
+                apiURL = FHIRrootURL + '/' + "Condition";
+                HTTPPostData(apiURL, jsonStr);
+            }
+        }
+
+        function postcon6ms() {
+            if (document.getElementById("Con6").checked == true) {
+                var subRef = "Patient/";
+                con6ms.subject.reference = subRef + document.getElementById("FHIRPtionID").value;
+                con6ms.subject.display = document.getElementById("name").value;
+                con6ms.code.coding[0].code = "25064002";
+                con6ms.code.coding[0].display = "Muscle stiffness";
+                con6ms.code.text = "全身痠痛";
+                con6ms.onsetDateTime = document.getElementById("ctime6").value + ":00";
+
+                var jsonStr = JSON.stringify(con6ms);
+                alert(jsonStr);
+
+                var apiURL;
+                apiURL = FHIRrootURL + '/' + "Condition";
+                HTTPPostData(apiURL, jsonStr);
+            }
+        }
+
+        function postcon7chill() {
+            if (document.getElementById("Con7").checked == true) {
+                var subRef = "Patient/";
+                con7chill.subject.reference = subRef + document.getElementById("FHIRPtionID").value;
+                con7chill.subject.display = document.getElementById("name").value;
+                con7chill.code.coding[0].code = "43724002";
+                con7chill.code.coding[0].display = "Chill";
+                con7chill.code.text = "冷顫";
+                con7chill.onsetDateTime = document.getElementById("ctime7").value + ":00";
+
+                var jsonStr = JSON.stringify(con7chill);
+                alert(jsonStr);
+
+                var apiURL;
+                apiURL = FHIRrootURL + '/' + "Condition";
+                HTTPPostData(apiURL, jsonStr);
+            }
+        }
+    </script>
+
 </head>
+
 <body style="height: 780px">
     名字:
-    <input type="text" name="pateintName" value="Mickey" id="name"/> &nbsp;
-    FHIR patient id:
-    <input type="text"  value="unknown" id="FHIRPtionID"/>  <br/>
+    <input type="text" name="pateintName" value="Mickey" id="name" /> &nbsp; FHIR patient id:
+    <input type="text" value="unknown" id="FHIRPtionID" /> <br/>
 
+
+    <!--時間-->
     <p>身體狀況</p>
-   
-     <input type="checkbox" id="Con1" name="fever" value="386661006">&nbsp;發燒&nbsp;&nbsp;&nbsp;
-     <input type="number" max="45.0" min="37.0" step="0.1" name="feverdegree">度&nbsp;&nbsp;
-     <input id="Button1" onclick="postcon1fever()"  type="button" value="postData" /><br><br>
 
-     <input type="checkbox" id="Con2" name="headache" value="25064002">&nbsp;頭痛:&nbsp;&nbsp;
-     嚴重程度:
-     <input id="Con1Mild"  type="radio" name="severity" value="Mild">輕度 &nbsp;
-     <input id="Con1Moderate" type="radio" name="severity" value="Moderate"> 中度&nbsp;
-     <input  id="Con1Severe" type="radio" name="severity" value="Severe"> 重度  &nbsp;&nbsp;
-     <input id="Button2" onclick="postcon2headache()" type="button" value="postData"/><br><br>
+    <input type="checkbox" id="Con1" name="fever" value="386661006">&nbsp;發燒&nbsp;&nbsp;&nbsp;
+    <input type="number" max="45.0" min="37.0" step="0.1" name="feverdegree">度&nbsp;&nbsp;
+    <p>發生時間: <input type="datetime-local" id="ctime1">
+        <input id="Button1" onclick="postcon1fever()" type="button" value="postData" /><br><br></p>
 
-     <input type="checkbox" id="Con3" name="fatigue" value="84229001">疲倦&nbsp;&nbsp;
-     <input id="Button3" onclick="postcon3fatigue()" type="button" value="postData" /><br><br>
+    <input type="checkbox" id="Con2" name="headache" value="25064002">&nbsp;頭痛:&nbsp;&nbsp; 嚴重程度:
+    <input id="Con1Mild" type="radio" name="severity" value="Mild">輕度 &nbsp;
+    <input id="Con1Moderate" type="radio" name="severity" value="Moderate"> 中度&nbsp;
+    <input id="Con1Severe" type="radio" name="severity" value="Severe"> 重度 &nbsp;&nbsp;
+    <input id="Button2" onclick="postcon2headache()" type="button" value="postData" />
+    <p>發生時間: <input type="datetime-local" id="ctime2"></p><br>
 
-     <input type="checkbox" id="Con4" name="musclepain" value="68962001">肌肉痛&nbsp;&nbsp;
-     嚴重程度:
-     <input id="Con4Mild"  type="radio" name="severity" value="Mild">輕度 &nbsp;
-     <input id="Con4Moderate" type="radio" name="severity" value="Moderate"> 中度&nbsp;
-     <input  id="Con4Severe" type="radio" name="severity" value="Severe"> 重度  &nbsp;&nbsp;
-     <input id="Button4" onclick="postcon4musclepain()" type="button" value="postData"/><br><br>
+    <input type="checkbox" id="Con3" name="fatigue" value="84229001">疲倦&nbsp;&nbsp;
+    <p>發生時間: <input type="datetime-local" id="ctime3">
+        <input id="Button3" onclick="postcon3fatigue()" type="button" value="postData" /><br><br></p>
 
-     <input type="checkbox" id="Con5" name="Nausea and vomiting" value="16932000">噁心嘔吐&nbsp;&nbsp;
-     <input id="Button3" onclick="postcon5nv()" type="button" value="postData" /><br><br>
+    <input type="checkbox" id="Con4" name="musclepain" value="68962001">肌肉痛&nbsp;&nbsp; 嚴重程度:
+    <input id="Con4Mild" type="radio" name="severity" value="Mild">輕度 &nbsp;
+    <input id="Con4Moderate" type="radio" name="severity" value="Moderate"> 中度&nbsp;
+    <input id="Con4Severe" type="radio" name="severity" value="Severe"> 重度 &nbsp;&nbsp;
+    <input id="Button4" onclick="postcon4musclepain()" type="button" value="postData" />
+    <p>發生時間: <input type="datetime-local" id="ctime4"></p><br>
 
-     <input type="checkbox" id="Con6" name="Muscle stiffness" value="25064002">全身痠痛&nbsp;&nbsp;
-     <input id="Button3" onclick="postcon6ms()" type="button" value="postData" /><br><br>
+    <input type="checkbox" id="Con5" name="Nausea and vomiting" value="16932000">噁心嘔吐&nbsp;&nbsp;
+    <p>發生時間: <input type="datetime-local" id="ctime5">
+        <input id="Button5" onclick="postcon5nv()" type="button" value="postData" /><br><br></p>
 
-     <input type="checkbox" id="Con7" name="Chill" value="43724002">冷顫&nbsp;&nbsp;
-     <input id="Button3" onclick="postcon7chill()" type="button" value="postData" /><br><br>
-</body> 
-<script >
+    <input type="checkbox" id="Con6" name="Muscle stiffness" value="25064002">全身痠痛&nbsp;&nbsp;
+    <p>發生時間: <input type="datetime-local" id="ctime6">
+        <input id="Button6" onclick="postcon6ms()" type="button" value="postData" /><br><br></p>
+
+    <input type="checkbox" id="Con7" name="Chill" value="43724002">冷顫&nbsp;&nbsp;
+    <p>發生時間: <input type="datetime-local" id="ctime7">
+        <input id="Button7" onclick="postcon7chill()" type="button" value="postData" /><br><br></p>
+</body>
+<script>
     document.getElementById("FHIRPtionID").value = getCookie("patientID");
     document.getElementById("name").value = getCookie("patientName");
-
 </script>
+
 </html>

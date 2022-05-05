@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+    <script src="setting.js"></script>
+    <script src="Cookie.js"></script>
+    <script src="HTTP2019.js"></script>
+
+
+
+    <script>
+        var myObj = {
+            "resourceType": "Practitioner",
+            "active": true,
+            "name": [{
+                "text": [
+                    "Elon Musk"
+                ]
+            }]
+        }
+
+        function postData() {
+            myObj.name[0].text = document.getElementById("name1").value;
+
+            alert("aaa");
+
+            var jsonStr = JSON.stringify(myObj);
+            //alert(jsonStr);
+            var apiURL;
+            apiURL = FHIRrootURL + '/' + "Practitioner";
+            HTTPPostData(apiURL, jsonStr);
+        }
+
+        //practitioner:2879110
+    </script>
+</head>
+
+<body style="height:780px">
+
+    <br><br>您的姓名：
+    <input type="text" id="name1">
+
+    <br><br><input id="Button1" onclick="postData()" type="button" value="postData" /><br><br>
+
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+    <script src="setting.js"></script>
+    <script src="Cookie.js"></script>
+    <script src="HTTP2019.js"></script>
+
+
+
+    <script>
+        var myObj = {
+            "resourceType": "Schedule",
+            "idenifier": [{
+                "use": "usual",
+                "system": "http://example.org/scheduleid",
+                "value": "46"
+            }],
+            "active": true,
+            /*"serviceCategory": [  //服務類別
+                {
+                    "coding": [
+                        {
+                            "code": "17",
+                            "display": "General Practice"
+                        }
+                    ]
+                }
+            ],*/
+            "serviceType": [ //服務類型
+                {
+                    "coding": [{
+                        "code": "57",
+                        "display": "Immunization"
+                    }]
+                }
+            ],
+            /*"specialty": [
+                {
+                    "coding": [
+                        {
+                            "code": "408480009",
+                            "display": "Clinical immunology"
+                        }
+                    ]
+                }
+            ],*/
+            "actor": [{
+                    "reference": "Practitioner/2879110",
+                    "display": "Dr. Beverly Crusher"
+                },
+                /*{
+                    "reference": "Location/3",
+                    "display": "USS Enterprise-D Sickbay"
+                }*/
+            ],
+            "planningHorizon": {
+                "start": "2017-12-25T09:15:00",
+                "end": "2017-12-25T09:30:00"
+            },
+        }
+
+        function postData() {
+            myObj.actor[0].reference = "/Practitioner/" + document.getElementById("prid").value;
+            myObj.actor[0].display = document.getElementById("name1").value;
+            //myObj.serviceType[0].coding[0].display = document.getElementById("immunization2").value;
+            myObj.planningHorizon.start = document.getElementById("starttime").value + ":00";
+            myObj.planningHorizon.end = document.getElementById("endtime").value + ":00";
+
+            alert("aaa");
+
+            var jsonStr = JSON.stringify(myObj);
+            //alert(jsonStr);
+            var apiURL;
+            apiURL = FHIRrootURL + '/' + "Schedule";
+            HTTPPostData(apiURL, jsonStr);
+        }
+
+        //practitioner:2879110
+    </script>
+</head>
+
+<body style="height:780px">
+
+    <br><br>您的practitionerID：
+    <input type="text" id="prid">
+
+    <br><br>您的名字：
+    <input type="text" id="name1">
+
+    <!--<br><br>服務項目：
+    <select id="servicecategory1">
+        <option value="immunization1">疫苗施打</option>
+    </select>-->
+
+    <br><br>服務類型：
+    <select id="servicetype1">
+        <option value="immunization2">疫苗施打</option>
+    </select>
+
+    <br><br>開始時間：
+    <input type="datetime-local" id="starttime">
+
+    <br><br>結束時間：
+    <input type="datetime-local" id="endtime">
+
+    <br><br><input id="Button1" onclick="postData()" type="button" value="postData" /><br><br>
+
+</body>
+
+</html>
